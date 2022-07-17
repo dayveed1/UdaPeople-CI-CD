@@ -228,6 +228,9 @@ jobs:
       # Docker image here that supports NodeJS
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - build-backend
       - run:
           name: Run migrations
           command: |
@@ -235,6 +238,7 @@ jobs:
             npm install
             npm run migrations > migrations_dump.txt
             cat migrations_dump.txt
+            npm audit fix
           
             
       - run:
