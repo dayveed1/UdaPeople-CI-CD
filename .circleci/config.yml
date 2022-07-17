@@ -186,10 +186,9 @@ jobs:
   configure-infrastructure:
     docker:
       - image: cimg/base:stable
-      # Docker image here that supports Ansible
+     
     steps:
       - checkout
-      - install_ansible
       - add_ssh_keys:
           fingerprints: ["5b:00:b4:a5:82:23:c2:10:74:76:41:d7:9c:b9:f8:1a"]
       - attach_workspace:
@@ -197,8 +196,9 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            # Your code here
-            exit 1
+            apk add --update ansible
+            pip install awscli
+            
       - run:
           name: Configure server
           command: |
