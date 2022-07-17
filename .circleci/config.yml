@@ -228,8 +228,6 @@ jobs:
       # Docker image here that supports NodeJS
     steps:
       - checkout
-      - install_awscli    
-      # Checkout code from git
       - run:
           name: Run migrations
           command: |
