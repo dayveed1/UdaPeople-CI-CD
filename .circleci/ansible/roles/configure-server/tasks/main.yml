@@ -1,15 +1,15 @@
 - name: "Add node.js from Nodesource"
   become: true
   shell: |
-    get_url:
-       url: https://deb.nodesource.com/setup_13.x | sudo -E bash -
-
+    curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+  args:
+    warn: no
     
 
 - name: "Install Node.js 13"
   become: true
   apt: 
-    name: ["nodejs", "npm"]
+    name: ["nodejs"]
     state: latest
     update_cache: yes
 
