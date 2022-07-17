@@ -15,7 +15,24 @@ version: 2.1
 #             aws cloudformation delete-stack --stack-name udapeople-frontend-<< parameters.workflow_ID >>
 #             aws cloudformation delete-stack --stack-name udapeople-backend-<< parameters.workflow_ID >>
 #             aws s3 rm s3://udapeople-<<parameters.Workflow_ID>> --recursive
-            
+commands:          
+  destroy_environments:
+    description: Destroy back-end and front-end cloudformation stacks given a workflow ID.
+    parameters:
+      backend:
+        type: string
+      frontend:
+        type: string
+      bucket_id:
+        type: string
+    steps:
+      - run:
+          name: Destroy environment
+          when: on_fail
+          command: |
+            aws s3 rm "s3://udapeople-<< parameters.bucket_id >>" --recursive
+            aws cloudformation delete-stack --stack-name << parameters.backend >>
+            aws cloudformation delete-stack --stack-name << parameters.frontend >>
 
 #   revert-migrations:
 #     description: Revert the last migration if successfully run in the current workflow.
