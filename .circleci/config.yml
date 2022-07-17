@@ -118,10 +118,10 @@ jobs:
           name: Front-end Scan
           command: |
              cd frontend
-             npm install
+             npm install npm@latest -g
              npm audit fix
              npm audit --audit-level=critical
-             npm audit fix --audit-level=critical
+             npm audit fix --force
              npm audit fix --audit-level=critical --force
             
 
