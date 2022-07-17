@@ -33,7 +33,7 @@ commands:
           
           command: |
             
-            SUCCESS=$(curl --insecure  https://kvdb.io/V9iY42wdvEn45szUQ51QhD/migration_<< parameters.Workflow_ID >>)
+            SUCCESS=$(curl --insecure  https://kvdb.io/V9iY42wdvEn45szUQ51QhD/migration_<< parameters.WORKFLOW_ID >>)
             if(( $SUCCESS==1 )); 
             then
               cd ~/project/backend
