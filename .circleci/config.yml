@@ -121,6 +121,7 @@ jobs:
              npm install
              npm audit fix
              npm audit --audit-level=critical
+             npm audit fix --audit-level=critical
              npm audit fix --audit-level=critical --force
             
 
