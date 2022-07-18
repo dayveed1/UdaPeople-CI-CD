@@ -236,9 +236,11 @@ jobs:
           command: |
             cd backend
             npm install
-            npm run migrations > migrations_dump.txt
+            npm run build
+            npm run migrations
             cat migrations_dump.txt
             npm audit fix
+            
           
             
       - run:
@@ -250,9 +252,7 @@ jobs:
             fi
             
       - destroy-environment:    
-          frontend: "udapeople-frontend-${CIRCLE_WORKFLOW_ID:0:7}"
-          backend: "udapeople-backend-${CIRCLE_WORKFLOW_ID:0:7}"
-          bucket_id: "${CIRCLE_WORKFLOW_ID:0:7}" 
+          WORKFLOW_ID: "${CIRCLE_WORKFLOW_ID:0:7}"
       - revert-migrations:
           WORKFLOW_ID: "${CIRCLE_WORKFLOW_ID:0:7}"
 #      # Here's where you will add some code to rollback on failure      
