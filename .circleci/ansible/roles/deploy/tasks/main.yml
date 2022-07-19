@@ -9,11 +9,6 @@
   apt:
     upgrade: yes
 
-- name: remove unneeded deps
-  become: true
-  apt:
-    autoremove: yes
-
 - name: install deps
   become: true
   apt:
