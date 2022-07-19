@@ -358,9 +358,12 @@ jobs:
           command: |
             cd backend
             npm run build
-            tar -czf artifact.tar.gz dist/* package*
             cd ..
-            cp backend/artifact.tar.gz .circleci/ansible/roles/deploy/files
+            tar -C backend -czf artifact.tar.gz .
+            mkdir -p ~/project/.circleci/ansible/roles/deploy/files/
+            mv artifact.tar.gz .circleci/ansible/roles/deploy/files/artifact.tar.gz
+            cd .circleci/ansible
+            ansible-playbook -i inventory.txt deploy-backend.yml
 
       - destroy-environment:    
           frontend: "udapeople-frontend-${CIRCLE_WORKFLOW_ID:0:7}"
