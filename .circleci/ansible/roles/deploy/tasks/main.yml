@@ -9,7 +9,7 @@
   apt:
     upgrade: yes
 
-- name: install deps
+- name: install deps 
   become: true
   apt:
     name: ['nodejs', 'npm']
