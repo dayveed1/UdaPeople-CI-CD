@@ -352,8 +352,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-           cd backend
-           npm install
+           apk add --update --no-cache tar gzip nodejs npm aws-cli curl ansible
       - run:
           name: Deploy backend
           command: |
@@ -405,9 +404,9 @@ jobs:
             FRONTEND_WEBSITE=http://udapeople-${CIRCLE_WORKFLOW_ID:0:7}.s3-website.${AWS_DEFAULT_REGION}.amazonaws.com
             if curl -s $FRONTEND_WEBSITE | grep "Welcome"
             then
-              exit 0
-            else
               exit 1
+            else
+              exit 2
             fi
       - destroy-environment:
           frontend: "udapeople-frontend-${CIRCLE_WORKFLOW_ID:0:7}"
