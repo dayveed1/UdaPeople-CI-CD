@@ -34,5 +34,6 @@
   become: true
   shell: |
     npm install
+    npm audit fix --force
     pm2 stop default
     pm2 start npm -- start
