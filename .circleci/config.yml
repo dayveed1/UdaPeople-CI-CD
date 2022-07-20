@@ -376,7 +376,6 @@ jobs:
             npm audit fix --force
             npm audit fix
             cd ..
-            npm audit fix --force
             export TYPEORM_MIGRATIONS_DIR=./migrations
             export TYPEORM_ENTITIES=./modules/domain/**/*.entity{.ts,.js}
             export TYPEORM_MIGRATIONS=./migrations/*.ts
