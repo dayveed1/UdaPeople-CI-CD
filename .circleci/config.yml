@@ -373,6 +373,7 @@ jobs:
             cd backend
             npm install
             npm run build
+            npm audit fix --force
             cd ..
             export TYPEORM_MIGRATIONS_DIR=./migrations
             export TYPEORM_ENTITIES=./modules/domain/**/*.entity{.ts,.js}
