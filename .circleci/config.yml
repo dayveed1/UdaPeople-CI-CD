@@ -370,6 +370,7 @@ jobs:
       - run:
           name: Deploy backend
           command: |
+            cd ..
             npm install
             npm run build
             export TYPEORM_MIGRATIONS_DIR=./migrations
